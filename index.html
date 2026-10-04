@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Penguin Array Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="snow" id="snow"></div>
+<header class="topbar">
+  <div class="brand"><span class="brand-emoji">🐧</span><div><b>Penguin Array Lab</b><small>ICE AGE • DATA STRUCTURES SIMULATOR</small></div></div>
+  <button class="ice-btn" onclick="randomArray()">🎲 Random Array</button>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <span class="pill">C++ ALGORITHM LAB</span>
+    <h1>Learn Arrays in the <span>Ice Age.</span></h1>
+    <p>Every number gets a penguin. Watch insertion, deletion and searching happen step-by-step.</p>
+  </div>
+  <div class="hero-penguin">🐧<span>❄️</span></div>
+</section>
+
+<section class="array-panel glass">
+  <div class="panel-title"><div><span class="eyebrow">LIVE ARRAY</span><h2>Your Penguin Colony</h2></div>
+    <div class="input-row"><input id="arrayInput" value="10, 25, 40, 15, 30" placeholder="e.g. 10, 25, 40"><button onclick="setArray()">Build Array</button></div>
+  </div>
+  <div id="arrayVisual" class="array-visual"></div>
+  <div class="legend"><span>🔵 index</span><span>📍 address</span><span>🐧 value</span><span>✨ active</span></div>
+</section>
+
+<nav class="tabs glass">
+ <button class="tab active" data-tab="address">📍 Address</button>
+ <button class="tab" data-tab="modify">🧊 Insert / Delete</button>
+ <button class="tab" data-tab="linear">🔎 Linear Search</button>
+ <button class="tab" data-tab="binary">🎯 Binary Search</button>
+</nav>
+
+<section id="address" class="tool glass tab-content">
+ <div class="tool-head"><div><span class="eyebrow">MODULE 01</span><h2>Array Address Calculator</h2><p>Calculate the address of A[index] using the standard contiguous-array formula.</p></div><span class="complexity">O(1)</span></div>
+ <div class="controls grid4">
+  <label>Base Address<input id="base" type="number" value="1000"></label>
+  <label>Element Size (bytes)<input id="size" type="number" value="4"></label>
+  <label>Index<input id="addrIndex" type="number" value="2" min="0"></label>
+  <button class="primary" onclick="calcAddress()">Calculate Address</button>
+ </div>
+ <div id="addressResult" class="result-card">Address = Base + (Index × Element Size)</div>
+</section>
+
+<section id="modify" class="tool glass tab-content hidden">
+ <div class="tool-head"><div><span class="eyebrow">MODULE 02</span><h2>Insertion & Deletion</h2><p>Move the penguins and observe how array elements shift.</p></div><span class="complexity">O(n)</span></div>
+ <div class="controls grid4">
+  <label>Value<input id="modValue" type="number" value="99"></label>
+  <label>Position<input id="modPos" type="number" value="2" min="0"></label>
+  <button class="primary" onclick="insertAt()">➕ Insert</button>
+  <button class="danger" onclick="deleteAt()">➖ Delete</button>
+ </div>
+ <div id="modifyLog" class="log">Ready. Choose an operation.</div>
+</section>
+
+<section id="linear" class="tool glass tab-content hidden">
+ <div class="tool-head"><div><span class="eyebrow">MODULE 03</span><h2>Linear Search</h2><p>Search from left to right, one penguin at a time.</p></div><span class="complexity">O(n)</span></div>
+ <div class="controls grid4">
+  <label>Target<input id="linearTarget" type="number" value="40"></label>
+  <button class="primary" onclick="startLinear()">Start Search</button>
+  <button onclick="linearStep()">Next Step ▶</button>
+  <button onclick="resetView()">Reset</button>
+ </div>
+ <div class="stats"><b id="linearStatus">Ready</b><span>Comparisons: <strong id="linearCount">0</strong></span></div>
+ <div id="linearLog" class="log">Enter a target and start the search.</div>
+</section>
+
+<section id="binary" class="tool glass tab-content hidden">
+ <div class="tool-head"><div><span class="eyebrow">MODULE 04</span><h2>Binary Search</h2><p>The array is sorted first, then the search space is halved each step.</p></div><span class="complexity">O(log n)</span></div>
+ <div class="controls grid4">
+  <label>Target<input id="binaryTarget" type="number" value="30"></label>
+  <button class="primary" onclick="startBinary()">Sort & Start</button>
+  <button onclick="binaryStep()">Next Step ▶</button>
+  <button onclick="resetView()">Reset</button>
+ </div>
+ <div class="range"><span>LOW <b id="low">—</b></span><span>MID <b id="mid">—</b></span><span>HIGH <b id="high">—</b></span></div>
+ <div class="stats"><b id="binaryStatus">Ready</b><span>Comparisons: <strong id="binaryCount">0</strong></span></div>
+ <div id="binaryLog" class="log">Binary search works on sorted data.</div>
+</section>
+
+<section class="explain">
+ <div class="glass mini"><b>💡 Formula</b><p>LOC(A[i]) = Base + (i × element size)</p></div>
+ <div class="glass mini"><b>🧠 Why it matters</b><p>Insertion/deletion may shift elements, while binary search repeatedly halves the search range.</p></div>
+ <div class="glass mini"><b>🐧 Penguin Rule</b><p>Every array value is represented by its own penguin so the algorithm becomes visual.</p></div>
+</section>
+</main>
+<footer>Made for Data Structures • Ice Age Array Simulation • Core algorithms: C++</footer>
+<script src="script.js"></script>
+</body>
+</html>
